@@ -8,19 +8,17 @@ public class AccountModel {
     private int accountNumber;
     private int agencyNumber;
     private Boolean status;
-    private String address;
     private double balance;
     private CustomerModel customer;
     List<TransactionModel> transaction = new ArrayList<>();
 
     //Construtor
-    public AccountModel(int idAccount, int accountNumber, int agencyNumber, Boolean status, String address,
+    public AccountModel(int idAccount, int accountNumber, int agencyNumber, Boolean status,
                             double balance) {
         this.idAccount = idAccount;
         this.accountNumber = accountNumber;
         this.agencyNumber = agencyNumber;
         this.status = status;
-        this.address = address;
         this.balance = balance;
 
     }
@@ -32,6 +30,10 @@ public class AccountModel {
     // Getters e setters
         public int getIdAccount() {
             return idAccount;
+        }
+
+        public void setIdAccount (int idAccount) {
+            this.idAccount = idAccount;
         }
 
         public int getAccountNumber() {
@@ -51,12 +53,6 @@ public class AccountModel {
         }
         public void setStatus(Boolean status) {
             this.status = status;
-        }
-        public String getAddress() {
-            return address;
-        }
-        public void setAddress(String address) {
-            this.address = address;
         }
         public double getBalance() {
             return balance;
@@ -81,7 +77,6 @@ public class AccountModel {
                     ", accountNumber=" + accountNumber +
                     ", agencyNumber=" + agencyNumber +
                     ", status=" + status +
-                    ", address='" + address + '\'' +
                     ", balance=" + balance +
                     ", customer=" + customer +
                     ", transaction=" + transaction +

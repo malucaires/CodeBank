@@ -32,6 +32,10 @@ public class CustomerModel {
             return idCustomer;
         }
 
+        public void setIdCustomer(int idCustomer) {
+            this.idCustomer = idCustomer;
+        }
+
         public String getName() {
             return name;
         }
