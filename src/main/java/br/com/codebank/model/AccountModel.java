@@ -4,27 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountModel {
-        private int idAccount;
-        private int accountNumber;
-        private int agencyNumber;
-        private Boolean status;
-        private String address;
-        private double balance;
-        private CustomerModel customer;
-        List<TransactionModel> transaction = new ArrayList<>();
+    private int idAccount;
+    private int accountNumber;
+    private int agencyNumber;
+    private Boolean status;
+    private String address;
+    private double balance;
+    private CustomerModel customer;
+    List<TransactionModel> transaction = new ArrayList<>();
 
-        //Construtor
-        public AccountModel(int idAccount, int accountNumber, int agencyNumber, Boolean status, String address,
+    //Construtor
+    public AccountModel(int idAccount, int accountNumber, int agencyNumber, Boolean status, String address,
                             double balance) {
-            this.idAccount = idAccount;
-            this.accountNumber = accountNumber;
-            this.agencyNumber = agencyNumber;
-            this.status = status;
-            this.address = address;
-            this.balance = balance;
+        this.idAccount = idAccount;
+        this.accountNumber = accountNumber;
+        this.agencyNumber = agencyNumber;
+        this.status = status;
+        this.address = address;
+        this.balance = balance;
 
-        }
-        // Getters e setters
+    }
+
+    public AccountModel() {
+
+    }
+
+    // Getters e setters
         public int getIdAccount() {
             return idAccount;
         }
