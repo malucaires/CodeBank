@@ -3,7 +3,6 @@ package br.com.codebank.model;
 import java.util.Date;
 
 public class CustomerModel {
-
         private int idCustomer;
         private String name;
         private String socialName;
@@ -41,7 +40,12 @@ public class CustomerModel {
         }
 
         public void setName(String name) {
-            this.name = name;
+            if (name.isBlank()){
+                System.out.println("Name é um campo obrigatório");
+            }else{
+                this.name = name.toUpperCase();
+            }
+
         }
 
         public String getSocialName() {
@@ -49,7 +53,7 @@ public class CustomerModel {
         }
 
         public void setSocialName(String socialName) {
-            this.socialName = socialName;
+            this.socialName = socialName.toUpperCase();
         }
 
         public String getGender() {
@@ -57,7 +61,7 @@ public class CustomerModel {
         }
 
         public void setGender(String gender) {
-            this.gender = gender;
+            this.gender = gender.toUpperCase();
         }
 
         public String getAddress() {
@@ -65,7 +69,11 @@ public class CustomerModel {
         }
 
         public void setAddress(String address) {
-            this.address = address;
+            if (address.isBlank()){
+                System.out.println("Address é um campo obrigatório");
+            }else{
+                this.address = address.toUpperCase();
+            }
         }
 
         public Date getBirthDate() {
@@ -77,18 +85,27 @@ public class CustomerModel {
         }
 
         public String getCpf() {
+
             return cpf;
         }
 
         public void setCpf(String cpf) {
-            this.cpf = cpf;
+            if (cpf.isBlank()){
+                System.out.println("CPF é um campo obrigatório");
+            }else{
+                this.cpf = cpf.toUpperCase();
+            }
         }
 
         public String getPhoneNumber() {
             return phoneNumber;
         }
         public void setPhoneNumber(String phoneNumber) {
-            this.phoneNumber = phoneNumber;
+            if (phoneNumber.isBlank()){
+                System.out.println("Phone Number é um campo obrigatório");
+            }else{
+                this.phoneNumber = phoneNumber.toUpperCase();
+            }
         }
 
 

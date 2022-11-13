@@ -3,9 +3,6 @@ package br.com.codebank.model;
 
 import java.util.Date;
     public class TransactionModel {
-
-
-
         private int idTransaction;
         private Date date;
         private double amount;
