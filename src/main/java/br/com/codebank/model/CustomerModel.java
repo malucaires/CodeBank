@@ -16,7 +16,7 @@ public class CustomerModel {
     //Construtor
     public CustomerModel(int idCustomer, String name, String socialName, String gender, String address,
                          Date birthDate, String cpf, String phoneNumber, AccountModel account) {
-        /* alterando de this.idAccount = idAccountpara this.setIDAccount(idAccount) para que regras
+        /* alterando de this.idAccount = idAccount para this.setIDAccount(idAccount) para que regras
         definidas nos métodos de entrada (setters) sejam aplicadas também quando for utilizado
         o método construtor */
 
@@ -28,7 +28,7 @@ public class CustomerModel {
         this.setBirthDate(birthDate);
         this.setCpf(cpf);
         this.setPhoneNumber(phoneNumber);
-        this.account = account;
+        this.setAccount(account);
     }
     //Getters e setters
     public int getIdCustomer() {
@@ -36,7 +36,11 @@ public class CustomerModel {
     }
 
     public void setIdCustomer(int idCustomer) {
-        this.idCustomer = idCustomer;
+        if (idCustomer<=0){
+            System.out.println("idCustomer inválido");
+        }else{
+            this.idCustomer = idCustomer;
+        }
     }
 
     public String getName() {
@@ -49,7 +53,6 @@ public class CustomerModel {
         } else {
             this.name = name.toUpperCase();
         }
-
     }
 
     public String getSocialName() {
@@ -89,7 +92,6 @@ public class CustomerModel {
     }
 
     public String getCpf() {
-
         return cpf;
     }
 

@@ -6,13 +6,13 @@ import java.util.Date;
 public class TransactionModel {
     private int idTransaction;
     private Date date;
-    private double amount;
+    private float amount;
     private AccountModel idDestinyAccount;
     private AccountModel idOriginAccount;
 
-    public TransactionModel(int idTransaction, Date date, double amount,
+    public TransactionModel(int idTransaction, Date date, float amount,
                             AccountModel idDestinyAccount, AccountModel idOriginAccount) {
-        /* alterando de this.idAccount = idAccountpara this.setIDAccount(idAccount) para que regras
+        /* alterando de this.idAccount = idAccount para this.setIDAccount(idAccount) para que regras
         definidas nos métodos de entrada (setters) sejam aplicadas também quando for utilizado
         o método construtor */
         this.setIdTransaction(idTransaction);
@@ -27,7 +27,11 @@ public class TransactionModel {
     }
 
     public void setIdTransaction(int idTransaction) {
-        this.idTransaction = idTransaction;
+        if (idTransaction<=0){
+            System.out.println("idTransaction inválido");
+        }else{
+            this.idTransaction = idTransaction;
+        }
     }
 
     public Date getDate() {
@@ -38,12 +42,16 @@ public class TransactionModel {
         this.date = date;
     }
 
-    public double getAmount() {
+    public float getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setAmount(float amount) {
+        if (amount<=0){
+            System.out.println("amount inválido");
+        }else{
+            this.amount = amount;
+        }
     }
 
     public AccountModel getIdDestinyAccount() {

@@ -8,14 +8,14 @@ public class AccountModel {
     private int accountNumber;
     private int agencyNumber;
     private Boolean status;
-    private double balance;
+    private float balance;
     private CustomerModel customer;
     List<TransactionModel> transaction = new ArrayList<>();
 
     //Construtor
     public AccountModel(int idAccount, int accountNumber, int agencyNumber, Boolean status,
-                        double balance) {
-        /* alterando de this.idAccount = idAccountpara this.setIDAccount(idAccount) para que regras
+                        float balance) {
+        /* alterando de this.idAccount = idAccount para this.setIDAccount(idAccount) para que regras
          definidas nos métodos de entrada (setters) sejam aplicadas também quando for utilizado
          o método construtor */
         this.setIdAccount(idAccount);
@@ -35,7 +35,11 @@ public class AccountModel {
     }
 
     public void setIdAccount(int idAccount) {
-        this.idAccount = idAccount;
+        if (idAccount<=0){
+            System.out.println("idAccount inválido");
+        }else{
+            this.idAccount = idAccount;
+        }
     }
 
     public int getAccountNumber() {
@@ -43,7 +47,11 @@ public class AccountModel {
     }
 
     public void setAccountNumber(int accountNumber) {
-        this.accountNumber = accountNumber;
+        if (accountNumber<=0){
+            System.out.println("Account Number inválido");
+        }else{
+            this.accountNumber = accountNumber;
+        }
     }
 
     public int getAgencyNumber() {
@@ -51,7 +59,11 @@ public class AccountModel {
     }
 
     public void setAgencyNumber(int agencyNumber) {
-        this.agencyNumber = agencyNumber;
+        if (agencyNumber<=0){
+            System.out.println("Agency Number inválido");
+        }else{
+            this.agencyNumber = agencyNumber;
+        }
     }
 
     public Boolean getStatus() {
@@ -62,12 +74,16 @@ public class AccountModel {
         this.status = status;
     }
 
-    public double getBalance() {
+    public float getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
+    public void setBalance(float balance) {
+        if (balance<=0){
+            System.out.println("Saldo insuficiente!");
+        }else{
+            this.balance = balance;
+        }
     }
 
     public CustomerModel getCustomer() {
