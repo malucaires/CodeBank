@@ -1,21 +1,24 @@
 package br.com.codebank.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
+//@Entity Pq essa classe deve virar uma tabela
 public class CustomerModel {
     private int idCustomer;
     private String name;
     private String socialName;
     private String gender;
     private String address;
-    private Date birthDate;
+    private LocalDate birthDate;
     private String cpf;
     private String phoneNumber;
+
+    //@OneToOne pq provável que seja one to one na relação entre conta e cliente
     private AccountModel account;
 
     //Construtor
     public CustomerModel(int idCustomer, String name, String socialName, String gender, String address,
-                         Date birthDate, String cpf, String phoneNumber, AccountModel account) {
+                         LocalDate birthDate, String cpf, String phoneNumber, AccountModel account) {
         /* alterando de this.idAccount = idAccount para this.setIDAccount(idAccount) para que regras
         definidas nos métodos de entrada (setters) sejam aplicadas também quando for utilizado
         o método construtor */
@@ -83,11 +86,11 @@ public class CustomerModel {
         }
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

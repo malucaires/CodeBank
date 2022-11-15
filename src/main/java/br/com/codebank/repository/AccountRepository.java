@@ -1,4 +1,4 @@
 package br.com.codebank.repository;
 
-public interface AccountRepository {
+public interface AccountRepository{
 }

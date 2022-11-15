@@ -3,13 +3,19 @@ package br.com.codebank.model;
 import java.util.ArrayList;
 import java.util.List;
 
+//@Entity Pq essa classe deve virar uma tabela
 public class AccountModel {
     private int idAccount;
     private int accountNumber;
     private int agencyNumber;
     private Boolean status;
     private float balance;
+    //@OneToOne pq provável que seja one to one na relação entre conta e cliente
     private CustomerModel customer;
+
+    //@OneToMany (mappedBy="idOriginAccount")
+    //Uma conta tem várias transações
+    //@JsonIgnorePropertis(<nome da propriedade>) utilizado principalmente em listas para impedir loop infinito
     List<TransactionModel> transaction = new ArrayList<>();
 
     //Construtor

@@ -3,11 +3,16 @@ package br.com.codebank.model;
 
 import java.util.Date;
 
+//@Entity Pq essa classe deve virar uma tabela
 public class TransactionModel {
     private int idTransaction;
     private Date date;
     private float amount;
+
     private AccountModel idDestinyAccount;
+
+    //@ManyToOne @JoinColumn (name="idAccount") @JoinColumn define
+    //Transações estão vinculadas a uma conta origem
     private AccountModel idOriginAccount;
 
     public TransactionModel(int idTransaction, Date date, float amount,
