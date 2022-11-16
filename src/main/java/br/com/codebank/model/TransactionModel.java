@@ -1,31 +1,39 @@
 package br.com.codebank.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.util.Date;
 
 //@Entity Pq essa classe deve virar uma tabela
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class TransactionModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
     private int idTransaction;
     private Date date;
     private float amount;
 
+    @ManyToOne
+    @JoinColumn(name = "id_destiny_account_id")
     private AccountModel idDestinyAccount;
 
     //@ManyToOne @JoinColumn (name="idAccount") @JoinColumn define
     //Transações estão vinculadas a uma conta origem
+    @ManyToOne
+    @JoinColumn(name = "id_origin_account_id")
     private AccountModel idOriginAccount;
-
-    public TransactionModel(int idTransaction, Date date, float amount,
-                            AccountModel idDestinyAccount, AccountModel idOriginAccount) {
-        /* alterando de this.idAccount = idAccount para this.setIDAccount(idAccount) para que regras
-        definidas nos métodos de entrada (setters) sejam aplicadas também quando for utilizado
-        o método construtor */
-        this.setIdTransaction(idTransaction);
-        this.setDate(date);
-        this.setAmount(amount);
-        this.setIdDestinyAccount(idDestinyAccount);
-        this.setIdOriginAccount(idOriginAccount);
-    }
 
     public int getIdTransaction() {
         return idTransaction;
@@ -53,7 +61,7 @@ public class TransactionModel {
 
     public void setAmount(float amount) {
         if (amount<=0){
-            System.out.println("amount inválido");
+            System.out.println("Valor inválido");
         }else{
             this.amount = amount;
         }

@@ -1,21 +1,29 @@
 package br.com.codebank.service;
 
-import br.com.codebank.controller.AccountController;
 import br.com.codebank.model.AccountModel;
+import br.com.codebank.model.TransactionModel;
+import br.com.codebank.repository.AccountRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class AccountService {
 
-    AccountController ac = new AccountController();
-
+    @Autowired
+    private AccountRepository accountRepository;
 
     public AccountModel create (AccountModel account){
-        AccountModel ac = new AccountModel();
-
-        return ac;
+        return accountRepository.save(account);
     }
 
+    public AccountModel findById(Long idAccount){
+        return accountRepository.findById(idAccount).get();
+    }
 
+    public List<AccountModel> list(){
+        return accountRepository.findAll();
+    }
 
 }

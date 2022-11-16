@@ -1,17 +1,42 @@
 package br.com.codebank.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 //@Entity Pq essa classe deve virar uma tabela
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class AccountModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
     private int idAccount;
     private int accountNumber;
     private int agencyNumber;
     private Boolean status;
-    private float balance;
+    private static float balance;
+
+
     //@OneToOne pq provável que seja one to one na relação entre conta e cliente
+    @OneToOne
+    @JoinColumn(name = "customer_id_customer")
     private CustomerModel customer;
+
+    public void balance(float balance){
+        this.balance = balance;
+
+    }
 
     //@OneToMany (mappedBy="idOriginAccount")
     //Uma conta tem várias transações
@@ -31,10 +56,6 @@ public class AccountModel {
         this.setBalance(balance);
     }
 
-    public AccountModel() {
-
-    }
-
     // Getters e setters
     public int getIdAccount() {
         return idAccount;
@@ -42,7 +63,7 @@ public class AccountModel {
 
     public void setIdAccount(int idAccount) {
         if (idAccount<=0){
-            System.out.println("idAccount inválido");
+            System.out.println("Id da conta inválido");
         }else{
             this.idAccount = idAccount;
         }
@@ -54,7 +75,7 @@ public class AccountModel {
 
     public void setAccountNumber(int accountNumber) {
         if (accountNumber<=0){
-            System.out.println("Account Number inválido");
+            System.out.println("Número da conta inválido");
         }else{
             this.accountNumber = accountNumber;
         }
@@ -66,7 +87,7 @@ public class AccountModel {
 
     public void setAgencyNumber(int agencyNumber) {
         if (agencyNumber<=0){
-            System.out.println("Agency Number inválido");
+            System.out.println("Número da agência inválido");
         }else{
             this.agencyNumber = agencyNumber;
         }
@@ -80,7 +101,7 @@ public class AccountModel {
         this.status = status;
     }
 
-    public float getBalance() {
+    public static float getBalance() {
         return balance;
     }
 
