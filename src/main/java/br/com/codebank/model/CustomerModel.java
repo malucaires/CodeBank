@@ -1,38 +1,37 @@
 package br.com.codebank.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 
 //@Entity Pq essa classe deve virar uma tabela
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class CustomerModel {
+    @Id
+    @GeneratedValue
     private int idCustomer;
     private String name;
     private String socialName;
     private String gender;
+    @Embedded
     private String address;
     private LocalDate birthDate;
     private String cpf;
     private String phoneNumber;
 
     //@OneToOne pq provável que seja one to one na relação entre conta e cliente
+    @OneToOne
+    @JoinColumn(name = "account_id")
     private AccountModel account;
 
-    //Construtor
-    public CustomerModel(int idCustomer, String name, String socialName, String gender, String address,
-                         LocalDate birthDate, String cpf, String phoneNumber, AccountModel account) {
-        /* alterando de this.idAccount = idAccount para this.setIDAccount(idAccount) para que regras
-        definidas nos métodos de entrada (setters) sejam aplicadas também quando for utilizado
-        o método construtor */
-
-        this.setIdCustomer(idCustomer);
-        this.setName(name);
-        this.setSocialName(socialName);
-        this.setGender(gender);
-        this.setAddress(address);
-        this.setBirthDate(birthDate);
-        this.setCpf(cpf);
-        this.setPhoneNumber(phoneNumber);
-        this.setAccount(account);
-    }
     //Getters e setters
     public int getIdCustomer() {
         return idCustomer;
@@ -52,7 +51,7 @@ public class CustomerModel {
 
     public void setName(String name) {
         if (name.isBlank()) {
-            System.out.println("Name é um campo obrigatório");
+            System.out.println("Nome é um campo obrigatório");
         } else {
             this.name = name.toUpperCase();
         }
@@ -112,7 +111,7 @@ public class CustomerModel {
 
     public void setPhoneNumber(String phoneNumber) {
         if (phoneNumber.isBlank()) {
-            System.out.println("Phone Number é um campo obrigatório");
+            System.out.println("Numero de telefone é um campo obrigatório");
         } else {
             this.phoneNumber = phoneNumber.toUpperCase();
         }

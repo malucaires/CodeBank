@@ -3,6 +3,8 @@ package br.com.codebank.controller;
 import br.com.codebank.model.AccountModel;
 import br.com.codebank.model.CustomerModel;
 import br.com.codebank.model.TransactionModel;
+import br.com.codebank.service.TransactionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -10,6 +12,9 @@ import java.util.Date;
 @RestController
 @RequestMapping("/Transaction")
 public class TransactionController {
+
+    @Autowired
+    private TransactionService transactionService;
 
     @PostMapping
     public String create (@RequestBody TransactionModel transaction){
