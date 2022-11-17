@@ -38,11 +38,11 @@ public class CustomerController {
     }
 
     //Consultas por parametros
-    @GetMapping ("/Name/{name}")
-    public String findByName (@PathVariable String name){
-        System.out.println("name a ser pesquisado");
-        return "metodo de busca por nameCustomer";
-    }
+    //@GetMapping ("/Name/{name}")
+    //public String findByName (@PathVariable String name){
+    //System.out.println("name a ser pesquisado");
+    //return "metodo de busca por nameCustomer";
+    //}
 
     @GetMapping ("/Id/{id}")
     public String findById (@PathVariable int id){
