@@ -15,11 +15,13 @@ import javax.persistence.Embeddable;
 @AllArgsConstructor
 public class AddressModel {
 
-    private String  logger;
+    private String logger;
     private String district;
     private String city;
     private int num;
     private String cep;
+
+
 
 
 }

@@ -16,14 +16,21 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService; //Atributo privado
 
+
     @PostMapping // Criar cadastro
     public String create (@RequestBody CustomerModel customer){ //metodo create que vai receber o objeto customer
+
+        // return customerService.create(customer);
 
         System.out.println(customer.getIdCustomer());
         System.out.println(customer.getName());
         System.out.println(customer.getSocialName());
         System.out.println(customer.getGender());
-        System.out.println(customer.getAddress());
+        System.out.println(customer.getAddress().getLogger());
+        System.out.println(customer.getAddress().getDistrict());
+        System.out.println(customer.getAddress().getCity());
+        System.out.println(customer.getAddress().getNum());
+        System.out.println(customer.getAddress().getCep());
         System.out.println(customer.getBirthDate());
         System.out.println(customer.getCpf());
         System.out.println(customer.getPhoneNumber());

@@ -29,5 +29,11 @@ public class CustomerModel {
     @JoinColumn(name = "account_id")
     private AccountModel account;
 
+    public AddressModel getAddress() {
+        return address;
+    }
+
+
+
 }
 

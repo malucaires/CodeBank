@@ -18,8 +18,7 @@ public class AccountModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private Long id;
-    private int idAccount;
+    private Long idAccount;
     private int accountNumber;
     private int agencyNumber;
     private Boolean status;
