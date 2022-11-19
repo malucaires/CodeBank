@@ -15,7 +15,8 @@ import java.time.LocalDate;
 @Entity
 public class CustomerModel {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
     private Long idCustomer;
     private String name;
     private String socialName;
@@ -23,7 +24,9 @@ public class CustomerModel {
     @Embedded
     private AddressModel address;
     private LocalDate birthDate;
+    @Column(unique = true)
     private String cpf;
+    @Column(unique = true)
     private String phoneNumber;
     @OneToOne
     @JoinColumn(name = "account_id")

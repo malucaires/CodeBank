@@ -14,12 +14,16 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@SequenceGenerator(name = "ACC_SEQ", sequenceName = "ACCOUNT_SEQ", initialValue = 1000, allocationSize = 1)
 public class AccountModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long idAccount;
+    @Column(unique = true, insertable = true, updatable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ACC_SEQ")
     private int accountNumber;
+    @Column(insertable = true, updatable = false)
     private int agencyNumber;
     private Boolean status;
     private float balance;

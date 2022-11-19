@@ -1,8 +1,10 @@
 package br.com.codebank.controller;
 
 import br.com.codebank.model.AccountModel;
+import br.com.codebank.model.CustomerModel;
 import br.com.codebank.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,28 +17,25 @@ public class AccountController {
     private AccountService accountService;
 
     @PostMapping
-    public String create (@RequestBody AccountModel account){
+    public ResponseEntity<AccountModel> create (@RequestBody AccountModel account){
 
-        System.out.println(account.getIdAccount());
-        System.out.println(account.getAccountNumber());
-        System.out.println(account.getAgencyNumber());
-        System.out.println(account.getStatus());
-        System.out.println(account.getBalance());
+        return ResponseEntity.ok(accountService.create(account));
 
-        return "Metodo de create";
-
-        //return accountService.create(account);
     }
 
 
     @PutMapping
-    public String update (@RequestBody boolean account){
-        //lembrar de só atualizar o status
-        return "Medoto de update";
-         //return accountService.update(account);
-    }
-
     //Cunsulta por parametros (id,accountNumber,status,transação)
+    public String update (@RequestBody AccountModel account){
+
+        //return ResponseEntity.ok(accountService.create(account.getIdAccount()));
+
+
+       // return ResponseEntity.ok(accountService.update(account));
+
+        //lembrar de só atualizar o status
+        return "accountService.update(account)";
+    }
     @GetMapping ("/FindById/{id}")
     public String findById (@PathVariable Long id){
         System.out.println("Id do cliente a ser pesquisado");

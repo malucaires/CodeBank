@@ -4,6 +4,7 @@ import br.com.codebank.model.AccountModel;
 import br.com.codebank.model.CustomerModel;
 import br.com.codebank.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -18,9 +19,7 @@ public class CustomerController {
 
 
     @PostMapping // Criar cadastro
-    public String create (@RequestBody CustomerModel customer){ //metodo create que vai receber o objeto customer
-
-        // return customerService.create(customer);
+    public ResponseEntity<CustomerModel> create (@RequestBody CustomerModel customer){ //metodo create que vai receber o objeto customer
 
         System.out.println(customer.getIdCustomer());
         System.out.println(customer.getName());
@@ -35,7 +34,7 @@ public class CustomerController {
         System.out.println(customer.getCpf());
         System.out.println(customer.getPhoneNumber());
 
-        return "Metodo de create";
+        return ResponseEntity.ok(customerService.create(customer));
 
     }
 
