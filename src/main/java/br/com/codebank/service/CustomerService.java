@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class CustomerService {
@@ -22,11 +23,19 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
+    public void delete (Long id){
+        customerRepository.deleteById(id);
+    }
+
     public CustomerModel findById(Long idCustomer){
         return customerRepository.findById(idCustomer).get();
     }
 
     public List<CustomerModel> list(){
         return customerRepository.findAll();
+    }
+
+    public Optional<CustomerModel> findByCpf(String cpf) {
+        return customerRepository.findByCpf(cpf);
     }
 }

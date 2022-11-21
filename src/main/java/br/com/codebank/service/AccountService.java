@@ -1,8 +1,8 @@
 package br.com.codebank.service;
 
 import br.com.codebank.model.AccountModel;
-import br.com.codebank.model.TransactionModel;
 import br.com.codebank.repository.AccountRepository;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +13,8 @@ import java.util.Optional;
 public class AccountService {
 
     @Autowired
-    private AccountRepository accountRepository;
+    private static AccountRepository accountRepository;
+
 
     public AccountModel create (AccountModel account){
         return accountRepository.save(account);
@@ -21,35 +22,20 @@ public class AccountService {
 
     public AccountModel update (AccountModel account){
         return accountRepository.save(account);
-
-
-
-        /*
-        if (account.getIdAccount() == id){
-            return accountRepository.save(account);
-        }else{
-            return ""
-        }
-        */
-
-
-        /*
-        if{ condição da conta por chamar por id
-            if{
-                vai determinar se quer mudar o status
-                        se for qualquer outra coisa, retornar null
-            }
-        }
-
-        */
-
     }
 
-    public Optional<AccountModel> findById(Long idAccount){
+    public void delete(Long idAccount) {
+    }
+
+    public static @NotNull Optional<AccountModel> findById(Long idAccount){
         return accountRepository.findById(idAccount);
     }
 
-/*
+    public @NotNull Optional<AccountModel> findByAccountNumber(Long accountNumber){
+        return accountRepository.findByAccountNumber(accountNumber);
+    }
+
+    /*
     public AccountModel findById(Long idAccount){
         return accountRepository.findById(idAccount).get();
     }

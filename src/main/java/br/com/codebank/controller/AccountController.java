@@ -1,16 +1,17 @@
 package br.com.codebank.controller;
 
 import br.com.codebank.model.AccountModel;
-import br.com.codebank.model.CustomerModel;
 import br.com.codebank.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/Account")
+@RequestMapping("/account")
 public class AccountController {
 
     @Autowired
@@ -25,30 +26,43 @@ public class AccountController {
 
 
     @PutMapping
+    public ResponseEntity<AccountModel> update (@RequestBody AccountModel account){
+        return ResponseEntity.ok(accountService.update(account));
+    }
+
+    @DeleteMapping("/{id}") // Deletar para fins de teste apenas
+    public ResponseEntity<?>delete(@PathVariable Long id) throws Exception{
+        return ResponseEntity.ok().build();
+    }
+
     //Cunsulta por parametros (id,accountNumber,status,transação)
-    public String update (@RequestBody AccountModel account){
+    @GetMapping ("/id/{id}")
+    public ResponseEntity<AccountModel> findById (@PathVariable Long idAccount){
+        Optional<AccountModel> optional = AccountService.findById(idAccount);
 
-        //return ResponseEntity.ok(accountService.create(account.getIdAccount()));
-
-
-       // return ResponseEntity.ok(accountService.update(account));
-
-        //lembrar de só atualizar o status
-        return "accountService.update(account)";
-    }
-    @GetMapping ("/FindById/{id}")
-    public String findById (@PathVariable Long id){
-        System.out.println("Id do cliente a ser pesquisado");
-        return "metodo de busca por id";
+        return optional.map(ResponseEntity::ok).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping ("/FindByAccountNumber/{accountNumber}")
+    @GetMapping ("/accountNumber/{accountNumber}")
+    public ResponseEntity<AccountModel> findByAccountNumber(@PathVariable Long accountNumber){
+        Optional<AccountModel> optional = accountService.findByAccountNumber(accountNumber);
+
+        //Verificação se o accountNumber existe
+        if (optional.isPresent()){
+            return ResponseEntity.ok(optional.get());
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    /*
     public String findByAccountNumber (@PathVariable Long accountNumber){
-        System.out.println("Número da conta a ser pesquisado");
-        return "metodo de busca por account number";
-    }
+        //System.out.println("Número da conta a ser pesquisado");
+        //return "metodo de busca por account number";
 
-    @GetMapping ("/FindByStatus/{status}")
+        return null;
+    } */
+
+    @GetMapping ("/Status/{status}")
     public String findByStatus (@PathVariable Boolean status){
         System.out.println("Status a ser pesquisado");
         return "metodo de busca por status";

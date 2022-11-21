@@ -1,25 +1,26 @@
 package br.com.codebank.controller;
 
-import br.com.codebank.model.AccountModel;
 import br.com.codebank.model.CustomerModel;
 import br.com.codebank.service.CustomerService;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/Customer")
 public class CustomerController {
 
     @Autowired
-    private CustomerService customerService; //Atributo privado
+    private CustomerService customerService;
 
 
-    @PostMapping // Criar cadastro
-    public ResponseEntity<CustomerModel> create (@RequestBody CustomerModel customer){ //metodo create que vai receber o objeto customer
+    @PostMapping // Criar
+    public ResponseEntity<CustomerModel> create (@RequestBody @NotNull CustomerModel customer){
 
         System.out.println(customer.getIdCustomer());
         System.out.println(customer.getName());
@@ -38,9 +39,14 @@ public class CustomerController {
 
     }
 
-    @PutMapping //Alterar cadastro
+    @PutMapping //Alterar
     public String update (@RequestBody CustomerModel customer){
         return "Medoto de update";
+    }
+
+    @DeleteMapping("/{id}") // Deletar para fiz de teste apenas
+    public ResponseEntity<?>delete(@PathVariable Long idCustomer) throws Exception{
+        return ResponseEntity.ok().build();
     }
 
     //Consultas por parametros
@@ -51,15 +57,30 @@ public class CustomerController {
     //}
 
     @GetMapping ("/Id/{id}")
-    public String findById (@PathVariable int id){
-        System.out.println("id a ser pesquisado");
-        return "metodo de busca por idCustomer";
+    public ResponseEntity<CustomerModel> findById (@PathVariable Long id){
+        Optional<CustomerModel> optional = Optional.ofNullable(customerService.findById(id));
+
+        //Verificação se o Id existe
+        if (optional.isPresent()){
+            return ResponseEntity.ok(optional.get());
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+       // System.out.println("id a ser pesquisado");
+       // return "metodo de busca por idCustomer";
     }
 
     @GetMapping ("/CPF/{cpf}")
-    public String findByCpf (@PathVariable String cpf){
-        System.out.println("cpf a ser pesquisado");
-        return "metodo de busca por cpf";
+    public ResponseEntity<CustomerModel> findByCpf (@PathVariable String cpf){
+        Optional<CustomerModel> optional = customerService.findByCpf(cpf);
+
+        //Verificação se o Id existe
+        if (optional.isPresent()){
+            return ResponseEntity.ok(optional.get());
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+       // System.out.println("cpf a ser pesquisado");
+        // return "metodo de busca por cpf";
     }
 
     //Consulta por listas
