@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,10 +14,11 @@ import java.util.Optional;
 public class AccountService {
 
     @Autowired
-    private static AccountRepository accountRepository;
+    private AccountRepository accountRepository;
 
 
     public AccountModel create (AccountModel account){
+
         return accountRepository.save(account);
     }
 
@@ -24,16 +26,17 @@ public class AccountService {
         return accountRepository.save(account);
     }
 
-    public void delete(Long idAccount) {
+    public void delete(Long id) { // deletar para fins de
+        accountRepository.deleteById(id);
     }
 
-    public static @NotNull Optional<AccountModel> findById(Long idAccount){
+    public @NotNull Optional<AccountModel> findById(Long idAccount){
         return accountRepository.findById(idAccount);
     }
 
-    public @NotNull Optional<AccountModel> findByAccountNumber(Long accountNumber){
+   public @NotNull Optional<AccountModel> findByAccountNumber(Long accountNumber){
         return accountRepository.findByAccountNumber(accountNumber);
-    }
+   }
 
     /*
     public AccountModel findById(Long idAccount){

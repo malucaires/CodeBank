@@ -30,28 +30,26 @@ public class AccountController {
         return ResponseEntity.ok(accountService.update(account));
     }
 
-    @DeleteMapping("/{id}") // Deletar para fins de teste apenas
-    public ResponseEntity<?>delete(@PathVariable Long id) throws Exception{
-        return ResponseEntity.ok().build();
+    @DeleteMapping("/{id}") //Deletar para fins de teste
+    public void delete(@RequestParam Long id){
+        accountService.delete(id);
     }
+
 
     //Cunsulta por parametros (id,accountNumber,status,transação)
     @GetMapping ("/id/{id}")
     public ResponseEntity<AccountModel> findById (@PathVariable Long idAccount){
-        Optional<AccountModel> optional = AccountService.findById(idAccount);
+        Optional<AccountModel> optional = accountService.findById(idAccount);
 
         return optional.map(ResponseEntity::ok).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping ("/accountNumber/{accountNumber}")
-    public ResponseEntity<AccountModel> findByAccountNumber(@PathVariable Long accountNumber){
+   @GetMapping ("/accountNumber/{accountNumber}")
+   public ResponseEntity<AccountModel> findByAccountNumber(@PathVariable Long accountNumber){
         Optional<AccountModel> optional = accountService.findByAccountNumber(accountNumber);
 
         //Verificação se o accountNumber existe
-        if (optional.isPresent()){
-            return ResponseEntity.ok(optional.get());
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return optional.map(ResponseEntity::ok).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     /*
