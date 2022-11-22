@@ -17,6 +17,10 @@ public class TransactionService {
         return transactionRepository.save(transaction);
     }
 
+    public void delete (Long id){
+        transactionRepository.deleteById(id);
+    }
+
     public TransactionModel findById(Long idTransaction){
         return transactionRepository.findById(idTransaction).get();
     }
@@ -24,4 +28,5 @@ public class TransactionService {
     public List<TransactionModel> list(){
         return transactionRepository.findAll();
     }
+
 }

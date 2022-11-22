@@ -40,13 +40,18 @@ public class CustomerController {
     }
 
     @PutMapping //Alterar
-    public String update (@RequestBody CustomerModel customer){
-        return "Medoto de update";
+    public ResponseEntity<CustomerModel> update(@RequestBody CustomerModel customer) {
+        return ResponseEntity.ok(customerService.update(customer));
     }
 
-    @DeleteMapping("/{id}") // Deletar para fiz de teste apenas
+    /*@DeleteMapping("/{id}") // Deletar para fiz de teste apenas
     public ResponseEntity<?>delete(@PathVariable Long idCustomer) throws Exception{
         return ResponseEntity.ok().build();
+    }*/
+
+    @DeleteMapping("/{idCustomer}")//Deletar para fins de teste
+    public void delete(@RequestParam Long id){
+        customerService.delete(id);
     }
 
     //Consultas por parametros
