@@ -1,6 +1,7 @@
 package br.com.codebank.controller;
 
 import br.com.codebank.model.AccountModel;
+import br.com.codebank.model.TransactionModel;
 import br.com.codebank.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,18 +49,9 @@ public class AccountController {
     }
 
     @GetMapping ("/Status/{status}")
-    public String findByStatus (@PathVariable Boolean status){
-        System.out.println("Status a ser pesquisado");
-        return "metodo de busca por status";
-    }
-
-    @GetMapping ("/FindTransaction/{accountNumber}")
-    public String findAllTransactionByAccountNumber (@PathVariable int accountNumber){
-        System.out.println("Todas as transações realizadas pelo accountNumber");
-        /*
-        /Retornar dados da transação (id transacao, data, valor, conta origem ou destino
-         */
-        return "metodo de busca por accountNumber de todas as transações";
+    public ResponseEntity<List<AccountModel>> findByStatus (@PathVariable Boolean status){
+        List<AccountModel> listAccountsByStatus = accountService.findByStatus(status);
+        return ResponseEntity.ok(listAccountsByStatus);
     }
 
     //Consulta a lista de contas
