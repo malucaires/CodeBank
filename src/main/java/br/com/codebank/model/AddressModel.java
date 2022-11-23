@@ -21,7 +21,4 @@ public class AddressModel {
     private int num;
     private String cep;
 
-
-
-
 }

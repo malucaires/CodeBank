@@ -38,4 +38,5 @@ public class CustomerService {
     public Optional<CustomerModel> findByCpf(String cpf) {
         return customerRepository.findByCpf(cpf);
     }
+
 }

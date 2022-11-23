@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class TransactionService {
@@ -16,9 +17,6 @@ public class TransactionService {
     private TransactionRepository transactionRepository;
     @Autowired
     private AccountRepository accountRepository;
-
-
-
 
     public TransactionModel create(TransactionModel transaction){
         if (transaction.getAmount()<=0){
@@ -51,8 +49,6 @@ public class TransactionService {
             }
     }
 
-
-
     public void delete (Long id){
         transactionRepository.deleteById(id);
     }
@@ -63,6 +59,13 @@ public class TransactionService {
 
     public List<TransactionModel> list(){
         return transactionRepository.findAll();
+    }
+
+    public List<TransactionModel> findByIdAccount(Long idOrigin){
+        List<TransactionModel> transactionsall = transactionRepository.findAll();
+        List<TransactionModel> transactionsByIdOrigin = transactionsall.stream().
+                filter(p -> (p.getIdOriginAccount().getIdAccount() == idOrigin || p.getIdDestinyAccount().getIdAccount() == idOrigin)).collect(Collectors.toList());
+        return transactionsByIdOrigin;
     }
 
 }

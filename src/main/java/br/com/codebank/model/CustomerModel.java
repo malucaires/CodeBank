@@ -36,7 +36,5 @@ public class CustomerModel {
         return address;
     }
 
-
-
 }
 

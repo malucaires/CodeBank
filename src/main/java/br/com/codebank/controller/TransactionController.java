@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Transaction")
+@RequestMapping("/transaction")
 public class TransactionController {
 
     @Autowired
@@ -22,14 +22,11 @@ public class TransactionController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         transactionService.delete(id);
-
     }
     @PostMapping
     public ResponseEntity<TransactionModel> create (@RequestBody TransactionModel transaction){
         return ResponseEntity.ok(transactionService.create(transaction));
     }
-
-
 
     @GetMapping ("/Id/{id}")
     public ResponseEntity<TransactionModel> findById (@PathVariable Long id){
@@ -45,14 +42,11 @@ public class TransactionController {
     @GetMapping ("/Transactions")
     public ResponseEntity<List<TransactionModel>> viewAllTransactions (){
         return ResponseEntity.ok(transactionService.list());
-
     }
 
-
-
-
-
-    //private Date date;
-    //private AccountModel idDestinyAccount;
-    //private AccountModel idOriginAccount;
+    @GetMapping ("/FindTransaction/{id}")
+    public ResponseEntity<List<TransactionModel>> findAllTransactionById (@PathVariable Long id){
+        List<TransactionModel> listTransactionByIdOrigin = transactionService.findByIdAccount(id);
+        return ResponseEntity.ok(listTransactionByIdOrigin);
+    }
 }
