@@ -1,4 +1,6 @@
-# CodeBank
+<p align="center">
+  <img src="https://github.com/malucaires/CodeBank/blob/main/assets/FundoTransparente_branco.png" />
+</p>
 
 ## Introdução
 
@@ -34,3 +36,29 @@ Abaixo segue as entregas mínimas solicitadas para o bootcamp
 [X] O código deve ser entregue em um repositório no Github.
 
 [X] Liste os endpoints no README.md
+
+
+## Tecnologias Usadas 
+:white_check_mark: Slack
+:white_check_mark: Jira
+:white_check_mark: Github
+:white_check_mark: Intellij
+:white_check_mark: Postman
+:white_check_mark: H2
+
+## Endpoints 
+A rota usada no postman foi localhost:8080
+
+| VERBO | ROTA | AÇÃO|
+|--- |--- |--- |
+|POST | /account | CRIAR CONTA|
+|GET | /account | LISTAR CONTA|
+|PUT | /account | ATUALIZAR CONTA|
+|DELETE| /account/id| DELETAR CONTA|
+|GET | /account/accountnumber | LISTAR POR CONTA PELO NUMERO DA CONTA|
+|GET | /account/id | LISTAR CONTA POR ID|
+|POST | /costumer | CRIAR NOVO CLIENTE|
+|GET | /costumer/cpf | LISTAR CLIENTE PELO CPF|
+|GET | /costumer/id | LISTAR CLIENTE PELO NUMERO DO ID|
+|POST| /trasaction | FAZER UMA TRANSAÇÃO|
+|GET| /transaction/findtransaction | LISTAR HISTÓRICO DE TRANSAÇÃO|
