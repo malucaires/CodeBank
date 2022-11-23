@@ -39,10 +39,11 @@ public class AccountController {
         Optional<AccountModel> optional = accountService.findById(id);
 
         return optional.map(ResponseEntity::ok).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+
     }
 
    @GetMapping ("/accountNumber/{accountNumber}")
-   public ResponseEntity<AccountModel> findByAccountNumber(@PathVariable Long accountNumber){
+   public ResponseEntity<AccountModel> findByAccountNumber(@PathVariable int accountNumber){
         Optional<AccountModel> optional = accountService.findByAccountNumber(accountNumber);
 
         //Verificação se o accountNumber existe

@@ -25,8 +25,8 @@ public class TransactionController {
         return ResponseEntity.ok(transactionService.create(transaction));
     }
 
-    @DeleteMapping("/{idTransaction}")
-    public void delete(@RequestParam Long id){
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
         transactionService.delete(id);
 
     }

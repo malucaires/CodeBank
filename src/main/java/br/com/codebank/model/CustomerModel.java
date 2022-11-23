@@ -24,7 +24,7 @@ public class CustomerModel {
     @Embedded
     private AddressModel address;
     private LocalDate birthDate;
-    @Column(unique = true)
+    @Column(unique = true, updatable = false)
     private String cpf;
     @Column(unique = true)
     private String phoneNumber;
