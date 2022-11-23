@@ -19,11 +19,8 @@ public class AccountController {
 
     @PostMapping
     public ResponseEntity<AccountModel> create (@RequestBody AccountModel account){
-
         return ResponseEntity.ok(accountService.create(account));
-
     }
-
 
     @PutMapping
     public ResponseEntity<AccountModel> update (@RequestBody AccountModel account){
@@ -31,15 +28,15 @@ public class AccountController {
     }
 
     @DeleteMapping("/{id}") //Deletar para fins de teste
-    public void delete(@RequestParam Long id){
+    public void delete(@PathVariable Long id){
         accountService.delete(id);
     }
 
 
-    //Cunsulta por parametros (id,accountNumber,status,transação)
+    //Consulta por parametros (id,accountNumber,status,transação)
     @GetMapping ("/id/{id}")
-    public ResponseEntity<AccountModel> findById (@PathVariable Long idAccount){
-        Optional<AccountModel> optional = accountService.findById(idAccount);
+    public ResponseEntity<AccountModel> findById (@PathVariable Long id){
+        Optional<AccountModel> optional = accountService.findById(id);
 
         return optional.map(ResponseEntity::ok).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
