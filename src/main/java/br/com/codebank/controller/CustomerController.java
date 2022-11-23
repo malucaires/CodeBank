@@ -18,24 +18,15 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-
     @PostMapping // Criar
     public ResponseEntity<CustomerModel> create (@RequestBody @NotNull CustomerModel customer){
         return ResponseEntity.ok(customerService.create(customer));
-
     }
 
     @PutMapping //Alterar
     public ResponseEntity<CustomerModel> update(@RequestBody CustomerModel customer) {
         return ResponseEntity.ok(customerService.update(customer));
     }
-
-    /*@DeleteMapping("/{id}") // Deletar para fiz de teste apenas
-    public ResponseEntity<?>delete(@PathVariable Long idCustomer) throws Exception{
-        return ResponseEntity.ok().build();
-    }*/
-
-
 
     //Consultas por parametros
     //@GetMapping ("/Name/{name}")
@@ -58,8 +49,6 @@ public class CustomerController {
             return ResponseEntity.ok(optional.get());
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-       // System.out.println("id a ser pesquisado");
-       // return "metodo de busca por idCustomer";
     }
 
     @GetMapping ("/CPF/{cpf}")
@@ -71,9 +60,6 @@ public class CustomerController {
             return ResponseEntity.ok(optional.get());
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
-       // System.out.println("cpf a ser pesquisado");
-        // return "metodo de busca por cpf";
     }
 
     //Consulta por listas
@@ -81,7 +67,4 @@ public class CustomerController {
     public List<CustomerModel> list(){
         return customerService.list();
     }
-
-
-
 }

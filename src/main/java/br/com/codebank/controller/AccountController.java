@@ -31,9 +31,6 @@ public class AccountController {
     public void delete(@PathVariable Long id){
         accountService.delete(id);
     }
-    /*
-
-     */
 
     @GetMapping ("/accountNumber/{accountNumber}")
     public ResponseEntity<AccountModel> findByAccountNumber(@PathVariable int accountNumber){
@@ -47,19 +44,8 @@ public class AccountController {
     @GetMapping ("/id/{id}")
     public ResponseEntity<AccountModel> findById (@PathVariable Long id){
         Optional<AccountModel> optional = accountService.findById(id);
-
         return optional.map(ResponseEntity::ok).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
-
     }
-
-
-    /*
-    public String findByAccountNumber (@PathVariable Long accountNumber){
-        //System.out.println("Número da conta a ser pesquisado");
-        //return "metodo de busca por account number";
-
-        return null;
-    } */
 
     @GetMapping ("/Status/{status}")
     public String findByStatus (@PathVariable Boolean status){
@@ -81,12 +67,5 @@ public class AccountController {
     public List<AccountModel> list(){
         return accountService.list();
     }
-
-
-
-
-
-
-
 
 }

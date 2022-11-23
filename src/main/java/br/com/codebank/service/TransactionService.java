@@ -17,9 +17,6 @@ public class TransactionService {
     @Autowired
     private AccountRepository accountRepository;
 
-
-
-
     public TransactionModel create(TransactionModel transaction){
         if (transaction.getAmount()<=0){
             System.out.println("Valor inválido!");
@@ -50,8 +47,6 @@ public class TransactionService {
                 }
             }
     }
-
-
 
     public void delete (Long id){
         transactionRepository.deleteById(id);

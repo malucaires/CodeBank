@@ -22,14 +22,11 @@ public class TransactionController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         transactionService.delete(id);
-
     }
     @PostMapping
     public ResponseEntity<TransactionModel> create (@RequestBody TransactionModel transaction){
         return ResponseEntity.ok(transactionService.create(transaction));
     }
-
-
 
     @GetMapping ("/Id/{id}")
     public ResponseEntity<TransactionModel> findById (@PathVariable Long id){
@@ -47,12 +44,4 @@ public class TransactionController {
         return ResponseEntity.ok(transactionService.list());
 
     }
-
-
-
-
-
-    //private Date date;
-    //private AccountModel idDestinyAccount;
-    //private AccountModel idOriginAccount;
 }

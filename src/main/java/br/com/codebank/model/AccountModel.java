@@ -29,7 +29,6 @@ public class AccountModel {
     private int agencyNumber;
     private Boolean status;
 
-
     private float balance;
     @OneToOne
     @JoinColumn(name = "customer_id_customer")
