@@ -1,11 +1,9 @@
 package br.com.codebank.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -28,5 +26,15 @@ public class TransactionModel {
     @JoinColumn(name = "id_origin_account_id")
     private AccountModel idOriginAccount;
 
+    @Override
+    public String toString() {
+        return "TransactionModel{" +
+                "idTransaction=" + idTransaction +
+                ", date=" + date +
+                ", amount=" + amount +
+                ", idDestinyAccount=" + idDestinyAccount +
+                ", idOriginAccount=" + idOriginAccount +
+                '}';
+    }
 }
 
