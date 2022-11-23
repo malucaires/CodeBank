@@ -19,17 +19,17 @@ public class TransactionController {
 
     @Autowired
     private TransactionService transactionService;
-
-    @PostMapping
-    public ResponseEntity<TransactionModel> create (@RequestBody TransactionModel transaction){
-        return ResponseEntity.ok(transactionService.create(transaction));
-    }
-
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         transactionService.delete(id);
 
     }
+    @PostMapping
+    public ResponseEntity<TransactionModel> create (@RequestBody TransactionModel transaction){
+        return ResponseEntity.ok(transactionService.create(transaction));
+    }
+
+
 
     @GetMapping ("/Id/{id}")
     public ResponseEntity<TransactionModel> findById (@PathVariable Long id){

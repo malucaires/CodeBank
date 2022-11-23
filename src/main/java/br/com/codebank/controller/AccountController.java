@@ -35,6 +35,13 @@ public class AccountController {
 
      */
 
+    @GetMapping ("/accountNumber/{accountNumber}")
+    public ResponseEntity<AccountModel> findByAccountNumber(@PathVariable int accountNumber){
+        Optional<AccountModel> optional = accountService.findByAccountNumber(accountNumber);
+
+        //Verificação se o accountNumber existe
+        return optional.map(ResponseEntity::ok).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 
     //Consulta por parametros (id,accountNumber,status,transação)
     @GetMapping ("/id/{id}")
@@ -45,13 +52,6 @@ public class AccountController {
 
     }
 
-   @GetMapping ("/accountNumber/{accountNumber}")
-   public ResponseEntity<AccountModel> findByAccountNumber(@PathVariable int accountNumber){
-        Optional<AccountModel> optional = accountService.findByAccountNumber(accountNumber);
-
-        //Verificação se o accountNumber existe
-        return optional.map(ResponseEntity::ok).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
 
     /*
     public String findByAccountNumber (@PathVariable Long accountNumber){

@@ -35,10 +35,7 @@ public class CustomerController {
         return ResponseEntity.ok().build();
     }*/
 
-    @DeleteMapping("/{id}")//Deletar para fins de teste
-    public void delete(@PathVariable Long id){
-        customerService.delete(id);
-    }
+
 
     //Consultas por parametros
     //@GetMapping ("/Name/{name}")
@@ -46,6 +43,11 @@ public class CustomerController {
     //System.out.println("name a ser pesquisado");
     //return "metodo de busca por nameCustomer";
     //}
+
+    @DeleteMapping("/{id}")//Deletar para fins de teste
+    public void delete(@PathVariable Long id){
+        customerService.delete(id);
+    }
 
     @GetMapping ("/Id/{id}")
     public ResponseEntity<CustomerModel> findById (@PathVariable Long id){
