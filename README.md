@@ -2,7 +2,7 @@
 
 ## Introdução
 
-O CodeBank é um banco ficticio desenvolvido pelo grupo Andréa Tavares, Caroline Sales, Leticia Chaves, Lília Oliveira, Malu Caires, Nadine Lau e Marina Duarte para o projeto final do Bootcamp ElasTech da Gama Academy com a PagBank/PagSeguro.
+O CodeBank é um banco ficticio desenvolvido pelo grupo Andréa Tavares, Lília Oliveira, Malu Caires, Marina Duarte e Nadine Lau para o projeto final do Bootcamp ElasTech da Gama Academy com a PagBank/PagSeguro.
 
 O sistema deve permitir o cadastro de novos clientes, incluindo com dados pessoais e dados para contato. O cliente precisa estar conectado com uma conta bancária, com um valor inicial de saldo. A possibilidade de fazer transferência tanto de depósito como de saque deve existir além do histórico de transações.
 
@@ -12,16 +12,16 @@ Serão aplicados os conceitos de Java como orientação a objetos, onde classes 
 Abaixo segue as entregas mínimas solicitadas para o bootcamp
 
 ### 1. Casos de Uso do Sistema:
-[ ] Cadastro de clientes
+[X] Cadastro de clientes
 
-[ ] Buscar os clientes cadastrados
+[X] Buscar os clientes cadastrados
 
-[ ] Transferência de saldo entre as contas
+[X] Transferência de saldo entre as contas
 
-[ ] Buscar o histórico de transações entre contas
+[X] Buscar o histórico de transações entre contas
 
 ### 2. Banco de Dados:
-[ ] Tabelas bem estruturadas e populadas com valores para testes.
+[X] Tabelas bem estruturadas e populadas com valores para testes.
 
 [ ] O Banco deve ser entregue em script SQL junto ao repositório
 
@@ -31,6 +31,6 @@ Abaixo segue as entregas mínimas solicitadas para o bootcamp
 [ ] Escrever testes no JUnit que permitam demonstrar que o caso de de uso está com o comportamento desejado (ex.: cadastrar usuário).
 
 ### 4. Gerais:
-[ ] O código deve ser entregue em um repositório no Github.
+[X] O código deve ser entregue em um repositório no Github.
 
-[ ] Liste os endpoints no README.md
+[X] Liste os endpoints no README.md
