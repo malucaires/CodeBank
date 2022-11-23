@@ -34,7 +34,7 @@ public class AccountService {
         return accountRepository.findById(idAccount);
     }
 
-   public @NotNull Optional<AccountModel> findByAccountNumber(Long accountNumber){
+   public @NotNull Optional<AccountModel> findByAccountNumber(int accountNumber){
         return accountRepository.findByAccountNumber(accountNumber);
    }
 
