@@ -31,11 +31,9 @@ public class AccountController {
         accountService.delete(id);
     }
 
-    @GetMapping ("/accountNumber/{accountNumber}")
+    @GetMapping ("/accountnumber/{accountNumber}")
     public ResponseEntity<AccountModel> findByAccountNumber(@PathVariable int accountNumber){
         Optional<AccountModel> optional = accountService.findByAccountNumber(accountNumber);
-
-        //Verificação se o accountNumber existe
         return optional.map(ResponseEntity::ok).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
@@ -45,7 +43,7 @@ public class AccountController {
         return optional.map(ResponseEntity::ok).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping ("/Status/{status}")
+    @GetMapping ("/status/{status}")
     public ResponseEntity<List<AccountModel>> findByStatus (@PathVariable Boolean status){
         List<AccountModel> listAccountsByStatus = accountService.findByStatus(status);
         return ResponseEntity.ok(listAccountsByStatus);
@@ -55,5 +53,4 @@ public class AccountController {
     public List<AccountModel> list(){
         return accountService.list();
     }
-
 }

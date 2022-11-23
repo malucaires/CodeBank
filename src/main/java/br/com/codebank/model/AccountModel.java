@@ -1,12 +1,9 @@
 package br.com.codebank.model;
 
-import br.com.codebank.repository.AccountRepository;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +32,7 @@ public class AccountModel {
     private CustomerModel customer;
     @OneToMany
     List<TransactionModel> transaction = new ArrayList<>();
-/*
+
     public void setBalance(float balance) {
         if (this.getStatus()==true){
             this.balance = balance;
@@ -43,7 +40,11 @@ public class AccountModel {
             System.out.println("Conta inativa! Operação não realizada");
         }
     }
-*/
+
+    public void replaceStatus(Boolean status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "AccountModel{" +

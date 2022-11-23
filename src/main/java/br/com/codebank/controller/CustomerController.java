@@ -33,7 +33,7 @@ public class CustomerController {
         customerService.delete(id);
     }
 
-    @GetMapping ("/CPF/{cpf}")
+    @GetMapping ("/cpf/{cpf}")
     public ResponseEntity<CustomerModel> findByCpf (@PathVariable String cpf){
         Optional<CustomerModel> optional = customerService.findByCpf(cpf);
         if (optional.isPresent()){

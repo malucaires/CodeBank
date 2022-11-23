@@ -3,9 +3,7 @@ package br.com.codebank.model;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.Embeddable;
 
 @Embeddable

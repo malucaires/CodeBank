@@ -28,7 +28,7 @@ public class TransactionController {
         return ResponseEntity.ok(transactionService.create(transaction));
     }
 
-    @GetMapping ("/Id/{id}")
+    @GetMapping ("/id/{id}")
     public ResponseEntity<TransactionModel> findById (@PathVariable Long id){
         Optional<TransactionModel> optional = Optional.ofNullable(transactionService.findById(id));
 
@@ -39,12 +39,12 @@ public class TransactionController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping ("/Transactions")
+    @GetMapping ("/transactions")
     public ResponseEntity<List<TransactionModel>> viewAllTransactions (){
         return ResponseEntity.ok(transactionService.list());
     }
 
-    @GetMapping ("/FindTransaction/{id}")
+    @GetMapping ("/findtransaction/{id}")
     public ResponseEntity<List<TransactionModel>> findAllTransactionById (@PathVariable Long id){
         List<TransactionModel> listTransactionByIdOrigin = transactionService.findByIdAccount(id);
         return ResponseEntity.ok(listTransactionByIdOrigin);

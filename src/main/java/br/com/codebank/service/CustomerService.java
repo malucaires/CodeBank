@@ -1,11 +1,9 @@
 package br.com.codebank.service;
 
-import br.com.codebank.controller.CustomerController;
 import br.com.codebank.model.CustomerModel;
 import br.com.codebank.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 import java.util.Optional;
 
