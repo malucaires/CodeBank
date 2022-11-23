@@ -1,13 +1,11 @@
 package br.com.codebank.controller;
 
 import br.com.codebank.model.AccountModel;
-import br.com.codebank.model.TransactionModel;
 import br.com.codebank.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -41,7 +39,6 @@ public class AccountController {
         return optional.map(ResponseEntity::ok).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    //Consulta por parametros (id,accountNumber,status,transação)
     @GetMapping ("/id/{id}")
     public ResponseEntity<AccountModel> findById (@PathVariable Long id){
         Optional<AccountModel> optional = accountService.findById(id);
@@ -54,7 +51,6 @@ public class AccountController {
         return ResponseEntity.ok(listAccountsByStatus);
     }
 
-    //Consulta a lista de contas
     @GetMapping
     public List<AccountModel> list(){
         return accountService.list();

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Transaction")
+@RequestMapping("/transaction")
 public class TransactionController {
 
     @Autowired
