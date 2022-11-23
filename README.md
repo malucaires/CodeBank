@@ -42,7 +42,7 @@ Abaixo segue as entregas mínimas solicitadas para o bootcamp
 :white_check_mark: Postman
 :white_check_mark: H2
 
-## DIAGRAMA 
+## Diagrama Entidade Relacionamento
 ![text](https://github.com/malucaires/CodeBank/blob/main/assets/DiagramaRelacionamentoEntidade.png?raw=true)
 
 ## Endpoints 
